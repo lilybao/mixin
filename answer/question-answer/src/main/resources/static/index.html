@@ -1,0 +1,70 @@
+<html>
+<meta charset="UTF-8">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<form id="addForm" method="post" action="/answer/getAnswer">
+    <p style="width: auto;height: 50px;color: green;font-size: 50px">复制整个问题和选项粘贴到输入框中:  <textarea name="question" style="width: 800px;height:500px " ></textarea></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<!--    <input style="font-size: 50px"
+           type="text"
+           maxlength="1000"
+           name="question"/>-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+   <!-- <textarea name="question" style="width: 800px;height:500px " ></textarea>-->
+  <!--  <input style="font-size: 50px" type="submit" name="获取答案" value="Submit"/>-->
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p style="width: auto;height: 50px;color: green;font-size: 50px"> 答案:<span id="show" ></span></p>
+    <br>
+    <button style="color: chocolate; font-size: 50px" type="button" id="submitAdd">获取答案</button>
+</form>
+<script>
+
+    $("#form2").submit(function () {
+        $("#show").text("777");
+//中间可以做一些ajax数据交互，让"777"为后台返回的值
+        return false;
+    });
+
+    $("#submitAdd").click(function () {
+
+        var targetUrl = $("#addForm").attr("action");
+        var data1 = $("#addForm").serialize();
+        $.ajax({
+            type: 'post',
+            url: targetUrl,
+            async: true,
+            data: data1,  //重点必须为一个变量如：data
+            dataType: 'text',
+            success: function (result) {
+                console.log(result);
+                $("#show").text(result);
+            },
+            error: function () {
+                console.log(result);
+                $("#show").text(result);
+            }
+        })
+
+    })
+</script>
+</html>
